@@ -1,0 +1,206 @@
+/* =========================================================
+   EDIT COLOURS, FONT AND SHAPE HERE
+   These variables control the whole page. Change a value
+   here and every card updates. Good first exercise.
+   ========================================================= */
+:root {
+  --page-bg:        #f4f4f6;   /* background behind the cards   */
+  --card-bg:        #ffffff;   /* card background               */
+  --card-border:    #e6e6ea;   /* card border                  */
+
+  --text:           #16161a;   /* main text                    */
+  --text-muted:     #6c6c75;   /* secondary / helper text      */
+  --strike:         #ababb6;   /* crossed-out "value" price    */
+
+  --button-bg:      #16161a;   /* "Add to cart" button         */
+  --button-text:    #ffffff;
+  --button-hover:   #34343a;
+
+  --badge-bg:       #16161a;   /* "Preferred choice" / "Best value" tag */
+  --badge-text:     #ffffff;
+
+  --chip-border:    #e0e0e5;   /* product pill border          */
+  --chip-dot:       #9a9aa3;   /* dot inside product pill (set brand colour here) */
+
+  --check:          #16161a;   /* tick next to included items  */
+  --link:           #16161a;   /* "Compare all features" link  */
+
+  --card-radius:    14px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--page-bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  padding: 48px 20px;
+}
+
+/* Row that holds the three cards. They wrap and stack on small screens. */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ---------- THE CARD ---------- */
+.card {
+  position: relative;
+  flex: 1 1 320px;
+  max-width: 340px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tag on top of the highlighted cards */
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.card__subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+/* Row of product pills (Enscape, Veras, Cosmos ...) */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text);
+  border: 1px solid var(--chip-border);
+  border-radius: 100px;
+  padding: 4px 10px;
+}
+.chip::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--chip-dot);
+}
+
+/* Price block */
+.value {                       /* crossed-out "before" price */
+  font-size: 14px;
+  color: var(--strike);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.value .info {                 /* little ⓘ with tooltip on hover */
+  text-decoration: none;
+  cursor: help;
+  color: var(--strike);
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.price__amount { font-size: 34px; font-weight: 700; }
+.price__period { font-size: 14px; color: var(--text-muted); }
+
+.billing {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.save {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+/* Licence type */
+.licence { margin-bottom: 18px; }
+.licence__type { font-size: 14px; color: var(--text-muted); }
+.licence__name { font-size: 14px; font-weight: 600; margin: 2px 0; }
+.licence__desc { font-size: 13px; color: var(--text-muted); }
+
+/* Button */
+.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--button-bg);
+  color: var(--button-text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 13px 16px;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  transition: background 0.15s ease;
+}
+.btn:hover { background: var(--button-hover); }
+
+/* Included list */
+.includes__label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+.includes li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  stroke: var(--check);
+}
+
+/* "Compare all features" link, pinned to the bottom of the card */
+.compare {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+}
+.compare:hover { text-decoration: underline; }
